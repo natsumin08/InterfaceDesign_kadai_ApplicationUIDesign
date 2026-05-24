@@ -1,0 +1,1504 @@
+/* =========================================
+   KIKUZONO WEBSITE STYLE.CSS
+   TABLE OF CONTENTS
+
+   1. RESET & BASE
+   2. HEADER & NAVIGATION
+   3. COMMON COMPONENTS
+      - Buttons
+      - Labels
+      - Reveal Animation
+      - Footer
+   4. HOME PAGE
+      - Hero Visual Sections
+      - Collection
+      - Visit Us
+      - Our Story
+      - Privacy
+   5. MENU PAGE
+      - Menu Hero
+      - Store Limited
+   6. WARABIMOCHI DETAIL PAGE
+      - Detail Hero
+      - Intro
+      - Product Info
+      - Size Section
+   7. ACCESS PAGE
+      - Access Hero
+      - Shop Information
+      - Access Guide
+      - FAQ
+   8. RESPONSIVE
+========================================= */
+
+/* =========================================
+   1. RESET & BASE
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    background-color: #f9f7f2;
+    color: #111;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+========================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    z-index: 1000;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.menu-button {
+    position: relative;
+    z-index: 1100;
+}
+
+.menu-button a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+.menu-button a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.site-menu {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 260px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.25s ease;
+    backdrop-filter: blur(10px);
+    z-index: 1050;
+}
+
+header.menu-open .site-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.site-menu a {
+    display: block;
+    padding: 16px 24px;
+    color: #111;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+}
+
+.site-menu a:last-child {
+    border-bottom: none;
+}
+
+.site-menu a:hover {
+    background: #f4f1ea;
+}
+
+.logo a {
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+
+/* =========================================
+   3. COMMON LAYOUT
+========================================= */
+
+.hero,
+.scroll-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+/* =========================================
+   4. HOME PAGE - HERO VISUAL SECTIONS
+========================================= */
+
+.image-only-hero,
+.lift-section,
+.warabimochi-name-section {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #d8c8aa;
+}
+
+/* Hero blurred background layer */
+
+.image-only-hero::before,
+.lift-section::before,
+.warabimochi-name-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    filter:
+        blur(18px)
+        brightness(0.58);
+
+    transform: scale(1.15);
+
+    z-index: 0;
+}
+
+/* Individual image sources */
+
+.image-only-hero::before {
+    background-image: url('images/アップ.jpg');
+}
+
+.lift-section::before {
+    background-image: url('images/持ち上げ.jpg');
+}
+
+.warabimochi-name-section::before {
+    background-image: url('images/わらびもち.jpg');
+}
+
+/* Hero sharp center image layer */
+
+.image-only-hero::after,
+.lift-section::after,
+.warabimochi-name-section::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+
+    filter: brightness(0.65);
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 62%,
+            transparent 100%
+        );
+
+    -webkit-mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 62%,
+            transparent 100%
+        );
+}
+
+/* Individual center image sources */
+
+.image-only-hero::after {
+    background-image: url('images/アップ.jpg');
+}
+
+.lift-section::after {
+    background-image: url('images/持ち上げ.jpg');
+}
+
+.warabimochi-name-section::after {
+    background-image: url('images/わらびもち.jpg');
+}
+
+/* Hero dark overlay */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.12),
+            rgba(0,0,0,0.32)
+        );
+
+    z-index: 2;
+}
+
+/* Hero text layer */
+
+.center-text {
+    position: relative;
+    z-index: 3;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-bottom: 18px;
+    opacity: 0.9;
+    font-size: 18px;
+}
+
+.lift-section h1 {
+    font-size: 72px;
+    line-height: 1.15;
+    letter-spacing: 5px;
+    margin-bottom: 24px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-shadow:
+        0 6px 24px rgba(0,0,0,0.45);
+}
+
+.hero-copy {
+    max-width: 760px;
+    margin: 0 auto 32px;
+    font-size: 22px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.visible-copy {
+    opacity: 1;
+    transform: none;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* =========================================
+   3. COMMON COMPONENTS - BUTTONS
+========================================= */
+
+.button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #444;
+}
+
+.button.secondary {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.button.secondary:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.vertical-japanese h2 {
+    writing-mode: vertical-rl;
+    font-size: 120px;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.vertical-japanese p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* =========================================
+   4. COMMON SECTIONS / COLLECTION
+========================================= */
+
+.collection-section,
+.menu-hero,
+.guide-section,
+.access-section,
+.faq-section,
+.ingredients-section {
+    padding: 140px 80px;
+    text-align: center;
+}
+
+.collection-section {
+    background: #f5efe4;
+    color: #1a1a1a;
+}
+
+.collection-section h2,
+.menu-hero h1,
+.guide-section h2,
+.access-section h1,
+.faq-section h2,
+.ingredients-section h2 {
+    margin-bottom: 40px;
+    font-size: 48px;
+}
+
+.section-intro {
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.section-intro p,
+.ingredients-section p {
+    max-width: 980px;
+    margin: 0 auto;
+    color: #444;
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    max-width: 1600px;
+    margin: 0 auto 60px;
+}
+
+.product-card {
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #faf7f0;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    text-decoration: none;
+    color: #111;
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    background: #f5f1e8;
+}
+
+.product-card span {
+    display: block;
+    padding: 18px 20px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #1b1b1b;
+}
+
+/* =========================================
+   4. HOME PAGE - VISIT US SECTION
+========================================= */
+
+.shop-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 140px 70px 90px;
+    color: white;
+    overflow: hidden;
+}
+
+.shop-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/shop.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.82) saturate(1);
+    transform: scale(1.03);
+    transition: transform 1.5s ease;
+}
+
+.shop-section.visible .shop-bg {
+    transform: scale(1);
+}
+
+.shop-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to right,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.35)
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.35)
+        );
+}
+
+.shop-panel {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding: 42px 44px;
+    background: rgba(10,10,10,0.48);
+    backdrop-filter: blur(8px);
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.12);
+    text-align: left;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+}
+
+.shop-label {
+    font-size: 13px;
+    letter-spacing: 5px;
+    margin-bottom: 14px;
+    color: rgba(255,255,255,0.78);
+}
+
+.shop-panel h2 {
+    font-size: 42px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.shop-panel p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: rgba(255,255,255,0.92);
+}
+
+.shop-panel ul {
+    list-style: none;
+    margin-bottom: 28px;
+}
+
+.shop-panel li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+}
+
+.shop-button {
+    background: white;
+    color: black;
+    font-weight: bold;
+}
+
+.shop-button:hover {
+    background: #e8dcc2;
+    color: black;
+}
+
+/* =========================================
+   LEGACY / SHARED CARDS
+========================================= */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 300px;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.guide-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.guide-card img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.guide-card h3 {
+    margin-top: 20px;
+}
+
+.small-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: white;
+    background: #111;
+    padding: 10px 22px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.small-link:hover {
+    background: #333;
+}
+
+.access-info {
+    font-size: 24px;
+    line-height: 2;
+}
+
+.map-button {
+    margin-top: 40px;
+}
+
+.faq-item {
+    margin-bottom: 40px;
+}
+
+/* =========================================
+   3. COMMON COMPONENTS - REVEAL ANIMATION
+========================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* =========================================
+   4. HOME PAGE - OUR STORY SECTION
+========================================= */
+
+.story-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: 120px 40px;
+
+    color: white;
+}
+
+.story-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url('images/shop.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    filter:
+        brightness(0.45)
+        blur(2px);
+
+    transform: scale(1.05);
+
+    z-index: 0;
+}
+
+.story-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.6)
+        );
+
+    z-index: 1;
+}
+
+.story-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    text-align: center;
+
+    padding: 70px 60px;
+
+    background: rgba(10,10,10,0.35);
+
+    backdrop-filter: blur(8px);
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.story-content h2 {
+    font-size: 58px;
+
+    margin-bottom: 36px;
+}
+
+.story-content p {
+    font-size: 22px;
+
+    line-height: 2;
+
+    margin-bottom: 24px;
+
+    color: rgba(255,255,255,0.92);
+}
+
+.privacy-section {
+    padding: 150px 80px;
+    text-align: center;
+    background: #f9f7f2;
+}
+
+.privacy-section h2 {
+    margin-bottom: 42px;
+    font-size: 48px;
+    letter-spacing: 1px;
+}
+
+.privacy-section p {
+    max-width: 900px;
+    margin: 0 auto 26px;
+    color: #333;
+    font-size: 22px;
+    line-height: 1.9;
+}
+
+/* =========================================
+   3. COMMON COMPONENTS - FOOTER
+========================================= */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 40px;
+    background: #111;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    opacity: 0.7;
+}
+
+.copyright {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0 24px;
+    }
+
+    .logo a {
+        font-size: 24px;
+    }
+
+    .lift-section h1 {
+        font-size: 42px;
+    }
+
+    .vertical-japanese h2 {
+        font-size: 84px;
+    }
+
+    .collection-section,
+    .menu-hero,
+    .guide-section,
+    .access-section,
+    .faq-section,
+    .story-section,
+    .privacy-section,
+    .ingredients-section {
+        padding: 100px 24px;
+    }
+
+    .guide-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .shop-panel {
+        padding: 40px 24px;
+    }
+}
+
+/* =========================================
+   5. MENU PAGE - HERO
+========================================= */
+
+.menu-hero {
+    position: relative;
+
+    min-height: 75vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 140px 40px;
+}
+
+.menu-hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url('images/持ち上げ.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    filter:
+        brightness(0.45)
+        blur(2px);
+
+    transform: scale(1.05);
+
+    z-index: 0;
+}
+
+.menu-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.55)
+        );
+
+    z-index: 1;
+}
+
+.menu-hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.menu-hero-content h1 {
+    font-size: 72px;
+
+    margin-bottom: 28px;
+
+    line-height: 1.1;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,0.4);
+}
+
+.menu-hero-content p {
+    font-size: 24px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.88);
+}
+
+/* =========================================
+   3. COMMON COMPONENTS - LABELS
+========================================= */
+
+.dark-label {
+    color: #8b6b35;
+}
+
+/* =========================================
+   5. MENU / PRODUCT PAGE - STORE LIMITED
+========================================= */
+
+.store-limited-section {
+    position: relative;
+
+    min-height: 70vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: 120px 40px;
+
+    color: white;
+}
+
+.store-limited-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url('images/shop.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    filter:
+        brightness(0.4)
+        blur(2px);
+
+    transform: scale(1.05);
+
+    z-index: 0;
+}
+
+.store-limited-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.3),
+            rgba(0,0,0,0.65)
+        );
+
+    z-index: 1;
+}
+
+.store-limited-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    text-align: center;
+
+    padding: 70px 60px;
+
+    background: rgba(10,10,10,0.35);
+
+    backdrop-filter: blur(8px);
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.store-limited-content h2 {
+    font-size: 58px;
+
+    margin-bottom: 28px;
+}
+
+.store-limited-content p {
+    font-size: 22px;
+
+    line-height: 1.9;
+
+    margin-bottom: 36px;
+
+    color: rgba(255,255,255,0.9);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .menu-hero-content h1 {
+        font-size: 42px;
+    }
+
+    .menu-hero-content p {
+        font-size: 18px;
+    }
+
+    .store-limited-content {
+        padding: 50px 24px;
+    }
+
+    .store-limited-content h2 {
+        font-size: 38px;
+    }
+
+    .store-limited-content p {
+        font-size: 18px;
+    }
+}
+
+/* =========================================
+   6. WARABIMOCHI DETAIL PAGE
+========================================= */
+
+.warabi-detail-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    padding: 140px 40px;
+}
+
+.warabi-detail-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/わらびもち.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(0.48);
+    transform: scale(1.08);
+    z-index: 0;
+}
+
+.warabi-detail-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.22),
+            rgba(0,0,0,0.58)
+        );
+    z-index: 1;
+}
+
+.warabi-detail-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.warabi-detail-content h1 {
+    font-size: 90px;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    text-shadow: 0 10px 36px rgba(0,0,0,0.5);
+}
+
+.warabi-detail-content p {
+    font-size: 24px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+}
+
+.warabi-intro-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    padding: 150px 80px;
+    background: #f9f7f2;
+}
+
+.warabi-intro-image img {
+    width: 100%;
+    display: block;
+    border-radius: 28px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.18);
+}
+
+.warabi-intro-text h2 {
+    font-size: 58px;
+    margin-bottom: 28px;
+    line-height: 1.15;
+}
+
+.warabi-intro-text p {
+    font-size: 22px;
+    line-height: 1.9;
+    color: #333;
+    margin-bottom: 24px;
+}
+
+.warabi-info-section {
+    padding: 150px 80px;
+    text-align: center;
+    background: #f5efe4;
+}
+
+.warabi-info-section h2 {
+    font-size: 56px;
+    margin-bottom: 50px;
+}
+
+.warabi-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.warabi-info-card {
+    padding: 34px 24px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 18px 55px rgba(0,0,0,0.09);
+}
+
+.warabi-info-card span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6f3d;
+}
+
+.warabi-info-card p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.warabi-enjoy-section {
+    position: relative;
+    padding: 150px 80px;
+    text-align: center;
+    background: #111;
+    color: white;
+}
+
+.warabi-enjoy-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.warabi-enjoy-content h2 {
+    font-size: 58px;
+    margin-bottom: 28px;
+}
+
+.warabi-enjoy-content p {
+    font-size: 22px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.86);
+}
+
+@media (max-width: 768px) {
+    .warabi-detail-content h1 {
+        font-size: 54px;
+    }
+
+    .warabi-intro-section {
+        grid-template-columns: 1fr;
+        padding: 100px 24px;
+    }
+
+    .warabi-intro-text h2 {
+        font-size: 40px;
+    }
+
+    .warabi-info-section {
+        padding: 100px 24px;
+    }
+
+    .warabi-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .warabi-enjoy-section {
+        padding: 100px 24px;
+    }
+
+    .warabi-enjoy-content h2 {
+        font-size: 40px;
+    }
+}
+
+/* =========================================
+   6. WARABIMOCHI DETAIL PAGE - SIZE SECTION
+========================================= */
+
+.warabi-size-section {
+    padding: 150px 80px;
+    text-align: center;
+    background: #f9f7f2;
+}
+
+.warabi-size-section h2 {
+    font-size: 56px;
+    margin-bottom: 24px;
+}
+
+.warabi-size-lead {
+    max-width: 820px;
+    margin: 0 auto 60px;
+    font-size: 22px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.warabi-size-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    max-width: 1200px;
+    margin: 0 auto 70px;
+}
+
+.warabi-size-card {
+    overflow: hidden;
+    background: white;
+    border-radius: 26px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.12);
+    text-align: left;
+}
+
+.warabi-size-card img {
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.warabi-size-text {
+    padding: 34px 36px 40px;
+}
+
+.warabi-size-text h3 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.warabi-size-text .price {
+    font-size: 26px;
+    color: #8a6f3d;
+    margin-bottom: 18px;
+}
+
+.warabi-size-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.warabi-package-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #f5efe4;
+    border-radius: 30px;
+    text-align: left;
+}
+
+.warabi-package-detail img {
+    width: 100%;
+    display: block;
+    border-radius: 22px;
+}
+
+.warabi-package-detail h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.warabi-package-detail p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+    .warabi-size-section {
+        padding: 100px 24px;
+    }
+
+    .warabi-size-section h2 {
+        font-size: 38px;
+    }
+
+    .warabi-size-grid,
+    .warabi-package-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .warabi-package-detail {
+        padding: 28px;
+    }
+}
+
+/* =========================================
+   7. ACCESS PAGE
+========================================= */
+
+.access-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    padding: 140px 40px;
+}
+
+.access-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/shop.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.55);
+    transform: scale(1.04);
+    z-index: 0;
+}
+
+.access-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.58)
+        );
+    z-index: 1;
+}
+
+.access-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+}
+
+.access-hero-content h1 {
+    font-size: 72px;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    text-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+.access-hero-content p {
+    font-size: 24px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+}
+
+.access-detail-section {
+    padding: 150px 80px;
+    background: #f9f7f2;
+}
+
+.access-detail-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 60px;
+    background: white;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.1);
+}
+
+.access-detail-card h2 {
+    font-size: 56px;
+    margin-bottom: 50px;
+}
+
+.access-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.access-detail-item {
+    padding: 28px 22px;
+    background: #f5efe4;
+    border-radius: 20px;
+}
+
+.access-detail-item span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6f3d;
+}
+
+.access-detail-item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.access-guide-section {
+    padding: 150px 80px;
+    background: #f5efe4;
+    text-align: center;
+}
+
+.access-route-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 34px;
+    max-width: 1100px;
+    margin: 60px auto 0;
+}
+
+.access-route-card {
+    padding: 46px 40px;
+    background: white;
+    border-radius: 26px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.09);
+}
+
+.access-route-card h3 {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.access-route-card p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.access-faq {
+    padding: 150px 80px;
+    background: #f9f7f2;
+}
+
+.faq-list {
+    max-width: 1000px;
+    margin: 60px auto 0;
+    display: grid;
+    gap: 24px;
+}
+
+.access-faq .faq-item {
+    padding: 34px 40px;
+    background: white;
+    border-radius: 24px;
+    text-align: left;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+}
+
+.access-faq .faq-item h3 {
+    font-size: 24px;
+    margin-bottom: 14px;
+}
+
+.access-faq .faq-item p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+    .access-hero-content h1 {
+        font-size: 42px;
+    }
+
+    .access-detail-section,
+    .access-guide-section,
+    .access-faq {
+        padding: 100px 24px;
+    }
+
+    .access-detail-card {
+        padding: 48px 24px;
+    }
+
+    .access-detail-grid,
+    .access-route-grid {
+        grid-template-columns: 1fr;
+    }
+}
